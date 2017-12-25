@@ -3,15 +3,18 @@
   flex-direction: column;
   align-items: center;
   max-width: 90%; }
+  .List-header {
+    text-align: left;
+    font-size: 20px;
+    padding: 10px 0; }
 
 .Item {
   display: flex;
-  max-width: 800px;
   border: 1px solid black;
-  min-width: 800px; }
+  width: 600px; }
   @media only screen and (min-width: 800px) {
     .Item {
-      width: 100%; } }
+      width: 800px; } }
   .Item-image img {
     width: 100px;
     height: 100px; }
@@ -20,11 +23,15 @@
     flex-direction: column;
     max-width: 720px; }
     .Item-right-title {
-      max-width: 690px;
+      padding: 10px 0;
+      width: 450px;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
       padding-left: 10px; }
+      @media only screen and (min-width: 800px) {
+        .Item-right-title {
+          width: 690px; } }
       @media only screen and (min-width: 800px) {
         .Item-right-title {
           max-width: 890px; } }
@@ -59,22 +66,29 @@
       .Item-right-details-itemLink {
         padding-left: 10px; }
 
-.SearchBar input {
-  border: 1px solid black; }
+.SearchBar {
+  padding: 15px 0; }
+  .SearchBar input {
+    border: 1px solid black; }
 
 .ItemDetails {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  margin: 20px; }
+  .ItemDetails-intro {
+    margin: 20px; }
   .ItemDetails-upper {
     display: flex;
-    background: red;
     justify-content: space-between; }
     .ItemDetails-upper-left {
       display: flex;
       flex-direction: column; }
+      .ItemDetails-upper-left-title {
+        padding-bottom: 10px; }
       .ItemDetails-upper-left-details {
         display: flex; }
   .ItemDetails-lower {
-    display: flex; }
+    display: flex;
+    padding-top: 10px; }
     .ItemDetails-lower-right {
       padding-left: 15px; }

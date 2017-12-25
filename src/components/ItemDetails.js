@@ -14,7 +14,6 @@ class ItemDetails extends Component {
     // }
 
   componentWillMount () {
-    console.log(this.props);
     this.props.fetchItemDetails(this.props.match.params.itemTitle)
   }
 
@@ -25,7 +24,6 @@ class ItemDetails extends Component {
       description = description.substr(description.lastIndexOf(' <p>') + 1)
       return description
     }
-    console.log(description)
   }
 
   sliceAuthorLink () {
@@ -50,13 +48,13 @@ class ItemDetails extends Component {
     const { selectedItem } = this.props
     if (!selectedItem) {
       return (
-        <div>
+        <div className={cls('intro')}>
           Loading...
         </div>
       )
     } else if (selectedItem === 'none') {
       return (
-        <div>
+        <div className={cls('intro')}>
           Please go to <Link to={'/'}>main page</Link> and navigate from there
         </div>
       )

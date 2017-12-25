@@ -5,6 +5,7 @@ import { fetchItems } from '../actions/index';
 import Item from './Item'
 import SearchBar from './SearchBar';
 
+const INITIAL_LIMIT = 5
 class List extends Component {
   // static propTypes = {
   //   items: PropTypes.array,
@@ -12,7 +13,20 @@ class List extends Component {
 
   componentWillMount() {
     this.props.fetchItems()
-    console.log(this.props)
+  }
+
+  componentWillUnmount () {
+    this.setState({ limit: INITIAL_LIMIT})
+  }
+
+  state = {
+    limit: INITIAL_LIMIT,
+  }
+
+  onLoadMore = () => {
+    this.setState({
+      limit: this.state.limit + INITIAL_LIMIT
+    });
   }
 
   renderItemList () {
@@ -27,20 +41,12 @@ class List extends Component {
           return <Item key={item.title} item={item} />
         })
       } else {
-        return allItems.map(item => {
+        return allItems.slice(0, this.state.limit).map(item => {
           return <Item key={item.title} item={item} />
         })
       }
     }
   }
-
-  // renderList () {
-  //   if (this.props.items.length > 0) {
-  //     return this.props.items.map(item => {
-  //       return <Item key={item.title} item={item} />
-  //     })
-  //   }
-  // }
 
   render () {
     if (!this.props.items) {
@@ -52,9 +58,12 @@ class List extends Component {
     } else {
       return (
         <div className={'List'}>
-          Flicker Public Feed
+          <div className={'List-header'}>
+            Flicker Public Feed
+          </div>
           <SearchBar />
           {this.renderItemList()}
+          <a href="#" onClick={this.onLoadMore}>Load More</a>
         </div>
       )
     }
@@ -66,7 +75,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  console.log(state)
   return {
     items: state.items.items,
     searchTerm: state.search.searchTerm,
