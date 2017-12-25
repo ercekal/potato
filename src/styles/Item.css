@@ -1,0 +1,50 @@
+.App {
+  text-align: center; }
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px; }
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white; }
+
+.App-title {
+  font-size: 1.5em; }
+
+.App-intro {
+  font-size: large; }
+
+.Item {
+  background: red;
+  display: flex; }
+  .Item-image img {
+    width: 80px;
+    height: 80px; }
+  .Item-right {
+    display: flex;
+    flex-direction: column; }
+    .Item-right-details {
+      display: flex; }
+      .Item-right-details-date {
+        padding: 0 10px; }
+
+.ItemDetails {
+  display: flex; }
+  .ItemDetails-upper {
+    display: flex;
+    background: red;
+    justify-content: space-between; }
+    .ItemDetails-upper-left {
+      display: flex;
+      flex-direction: column; }
+      .ItemDetails-upper-left-details {
+        display: flex; }
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }

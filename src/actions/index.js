@@ -1,10 +1,10 @@
 import axios from 'axios'
 
 export const FETCH_ITEMS = 'FETCH_ITEMS';
-export const SELECTED_CATEGORY = 'SELECTED_CATEGORY';
+export const FETCH_ITEM_DETAILS = 'FETCH_ITEM_DETAILS';
 export const SEARCH_TERM = 'SEARCH_TERM';
 
-export function fetchItems() {
+export function fetchItems () {
   return dispatch => {
     axios.get('https://api.flickr.com/services/feeds/photos_public.gne?tags=potato&tagmode=all&format=json&nojsoncallback=1')
     .then(res => {
@@ -17,7 +17,14 @@ export function fetchItems() {
   }
 }
 
-export function searchItems(term) {
+export function fetchItemDetails (itemTitle) {
+  return  {
+    type: FETCH_ITEM_DETAILS,
+    payload: itemTitle
+  }
+}
+
+export function searchItems (term) {
   return  {
     type: SEARCH_TERM,
     payload: term

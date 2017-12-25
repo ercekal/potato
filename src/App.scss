@@ -1,0 +1,101 @@
+.List {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90%
+}
+.Item {
+  display: flex;
+  max-width: 800px;
+  border: 1px solid black;
+  min-width: 800px;
+  @media only screen and (min-width: 800px) {
+    width: 100%;
+  }
+  &-image {
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+  &-right {
+    display: flex;
+    flex-direction: column;
+    max-width: 720px;
+    &-title {
+      max-width: 690px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow:hidden;
+      @media only screen and (min-width: 800px) {
+        max-width: 890px;
+      }
+      padding-left: 10px;
+    }
+    &-details {
+      display: flex;
+      flex-direction: column;
+      @media only screen and (min-width: 800px) {
+        flex-direction: row;
+        padding-left: 10px;
+      }
+      &-date {
+        padding-left: 10px;
+        @media only screen and (min-width: 800px) {
+          padding: none;
+        }
+      }
+      &-author {
+        display: none;
+        @media only screen and (min-width: 800px) {
+          display: flex;
+        }
+      }
+      &-authorAndLink {
+        display: flex;
+        padding-left: 10px;
+        @media only screen and (min-width: 800px) {
+          padding: 0;
+        }
+      }
+      &-smallerView-author {
+        display: flex;
+        @media only screen and (min-width: 800px) {
+          display: none;
+        }
+      }
+      &-itemLink {
+        padding-left: 10px;
+      }
+    }
+  }
+}
+
+.SearchBar {
+  input {
+    border: 1px solid black;
+  }
+}
+
+.ItemDetails {
+  display: flex;
+  flex-direction: column;
+  &-upper {
+    display: flex;
+    background: red;
+    justify-content: space-between;
+    &-left {
+      display: flex;
+      flex-direction: column;
+      &-details {
+        display: flex;
+      }
+    }
+  }
+  &-lower {
+    display: flex;
+    &-right {
+      padding-left: 15px;
+    }
+  }
+}

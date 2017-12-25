@@ -12,38 +12,38 @@ class List extends Component {
 
   componentWillMount() {
     this.props.fetchItems()
+    console.log(this.props)
   }
 
-  componentWillReceiveProps (nextProps) {
-    console.log(nextProps)
-  }
-
-  // renderItemList() {
-  //   let allItems = this.props.items
-  //   let selectedItems = []
-  //   if (this.props.selectedCategory !== "" && typeof(allItems) !== "undefined" && allItems.length > 0) {
-  //     selectedItems = allItems.filter((item) => {
-  //       return item.categories.find((ele) => {
-  //         return ele.title === this.props.selectedCategory
-  //       })
-  //     })
-  //     return <ItemList selectedCategoryTitle={this.props.selectedCategory} items={selectedItems} />
-  //   }
-  // }
-
-  renderList () {
+  renderItemList () {
     if (this.props.items.length > 0) {
-      console.log(this.props.items)
-      return this.props.items.map(item => {
-        console.log(item)
-        return <Item key={item.published} item={item} />
-      })
+      let allItems = this.props.items
+      let selectedItems = []
+      if (this.props.searchTerm) {
+        selectedItems = allItems.filter(item => {
+          return item.tags.includes(this.props.searchTerm)
+        })
+        return selectedItems.map(item => {
+          return <Item key={item.title} item={item} />
+        })
+      } else {
+        return allItems.map(item => {
+          return <Item key={item.title} item={item} />
+        })
+      }
     }
   }
 
+  // renderList () {
+  //   if (this.props.items.length > 0) {
+  //     return this.props.items.map(item => {
+  //       return <Item key={item.title} item={item} />
+  //     })
+  //   }
+  // }
+
   render () {
     if (!this.props.items) {
-      console.log(this.props.items)
       return(
         <div>
           Loading...
@@ -51,9 +51,10 @@ class List extends Component {
       )
     } else {
       return (
-        <div>
+        <div className={'List'}>
+          Flicker Public Feed
           <SearchBar />
-          {this.renderList()}
+          {this.renderItemList()}
         </div>
       )
     }
@@ -68,6 +69,7 @@ function mapStateToProps(state) {
   console.log(state)
   return {
     items: state.items.items,
+    searchTerm: state.search.searchTerm,
   }
 }
 

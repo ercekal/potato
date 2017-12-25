@@ -1,28 +1,80 @@
-.App {
-  text-align: center;
-}
+.List {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90%; }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
+.Item {
+  display: flex;
+  max-width: 800px;
+  border: 1px solid black;
+  min-width: 800px; }
+  @media only screen and (min-width: 800px) {
+    .Item {
+      width: 100%; } }
+  .Item-image img {
+    width: 100px;
+    height: 100px; }
+  .Item-right {
+    display: flex;
+    flex-direction: column;
+    max-width: 720px; }
+    .Item-right-title {
+      max-width: 690px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      padding-left: 10px; }
+      @media only screen and (min-width: 800px) {
+        .Item-right-title {
+          max-width: 890px; } }
+    .Item-right-details {
+      display: flex;
+      flex-direction: column; }
+      @media only screen and (min-width: 800px) {
+        .Item-right-details {
+          flex-direction: row;
+          padding-left: 10px; } }
+      .Item-right-details-date {
+        padding-left: 10px; }
+        @media only screen and (min-width: 800px) {
+          .Item-right-details-date {
+            padding: none; } }
+      .Item-right-details-author {
+        display: none; }
+        @media only screen and (min-width: 800px) {
+          .Item-right-details-author {
+            display: flex; } }
+      .Item-right-details-authorAndLink {
+        display: flex;
+        padding-left: 10px; }
+        @media only screen and (min-width: 800px) {
+          .Item-right-details-authorAndLink {
+            padding: 0; } }
+      .Item-right-details-smallerView-author {
+        display: flex; }
+        @media only screen and (min-width: 800px) {
+          .Item-right-details-smallerView-author {
+            display: none; } }
+      .Item-right-details-itemLink {
+        padding-left: 10px; }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
+.SearchBar input {
+  border: 1px solid black; }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+.ItemDetails {
+  display: flex;
+  flex-direction: column; }
+  .ItemDetails-upper {
+    display: flex;
+    background: red;
+    justify-content: space-between; }
+    .ItemDetails-upper-left {
+      display: flex;
+      flex-direction: column; }
+      .ItemDetails-upper-left-details {
+        display: flex; }
+  .ItemDetails-lower {
+    display: flex; }
+    .ItemDetails-lower-right {
+      padding-left: 15px; }
