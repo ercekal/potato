@@ -1,0 +1,6 @@
+.Item {
+  background: red;
+  @media (min-width: 425px) {
+    display: blue;
+  }
+}
