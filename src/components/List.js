@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchItems } from '../actions/index';
@@ -7,9 +8,6 @@ import SearchBar from './SearchBar';
 
 const INITIAL_LIMIT = 5
 class List extends Component {
-  // static propTypes = {
-  //   items: PropTypes.array,
-  // }
 
   componentWillMount() {
     this.props.fetchItems()
@@ -38,11 +36,11 @@ class List extends Component {
           return item.tags.includes(this.props.searchTerm)
         })
         return selectedItems.map(item => {
-          return <Item key={item.title} item={item} />
+          return <Item key={item.link} item={item} />
         })
       } else {
         return allItems.slice(0, this.state.limit).map(item => {
-          return <Item key={item.title} item={item} />
+          return <Item key={item.link} item={item} />
         })
       }
     }
@@ -79,6 +77,10 @@ function mapStateToProps(state) {
     items: state.items.items,
     searchTerm: state.search.searchTerm,
   }
+}
+
+List.propTypes = {
+  items: PropTypes.array,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(List);

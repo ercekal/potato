@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -8,10 +9,6 @@ import { Link } from 'react-router-dom'
 const cls = s => s ? `ItemDetails-${s}` : 'ItemDetails'
 
 class ItemDetails extends Component {
-
-  // static propTypes = {
-    //   item: PropTypes.object.isRequired,
-    // }
 
   componentWillMount () {
     this.props.fetchItemDetails(this.props.match.params.itemTitle)
@@ -81,7 +78,7 @@ class ItemDetails extends Component {
           </div>
           <div className={cls('lower')}>
             <div className={cls('lower-left')}>
-              <img src={selectedItem.media.m} height='80px' width='80px'/>
+              <img src={selectedItem.media.m} alt='' height='80px' width='80px'/>
             </div>
             <div className={cls('lower-right')}>
               <div dangerouslySetInnerHTML={{__html: this.sliceDescription()}}>
@@ -105,6 +102,10 @@ function mapStateToProps(state) {
   return {
     selectedItem: state.items.selectedItem,
   }
+}
+
+ItemDetails.propTypes = {
+  items: PropTypes.object,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemDetails);

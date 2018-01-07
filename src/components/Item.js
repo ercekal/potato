@@ -1,13 +1,12 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 
 const cls = s => s ? `Item-${s}` : 'Item'
 
 export default class Item extends Component {
-  // static propTypes = {
-    //   item: PropTypes.object.isRequired,
-    // }
+
   sliceAuthorLink () {
     let author
     if (this.props.item) {
@@ -23,7 +22,7 @@ export default class Item extends Component {
       <div className={cls()}>
         <Link to={`/item/${item.title}`}>
           <div className={cls('image')}>
-            <img src={item.media.m} height='80px' width='80px'/>
+            <img src={item.media.m} alt='' height='80px' width='80px'/>
           </div>
         </Link>
           <div className={cls('right')}>
@@ -52,4 +51,8 @@ export default class Item extends Component {
         </div>
     )
   }
+}
+
+Item.propTypes = {
+  item: PropTypes.object,
 }

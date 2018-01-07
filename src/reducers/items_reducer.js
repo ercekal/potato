@@ -12,6 +12,7 @@ export default function(state = {}, action) {
       selectedItem = ['none']
     }
     return {...state, selectedItem: selectedItem[0]};
+    default:
   }
   return state;
 }
